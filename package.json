@@ -1,0 +1,32 @@
+{
+  "name": "graphql-elements",
+  "version": "1.0.0",
+  "description": "Graphql api of the atomic elements for fun use",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/server.ts",
+    "dev": "nodemon --exec 'npm start'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rnsell/graphql-elements.git"
+  },
+  "author": "rnsell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rnsell/graphql-elements/issues"
+  },
+  "homepage": "https://github.com/rnsell/graphql-elements#readme",
+  "dependencies": {
+    "apollo-server-express": "^2.17.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}

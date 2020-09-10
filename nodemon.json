@@ -1,0 +1,5 @@
+{
+  "ignore": ["node_modules", "fixtures/*"],
+  "watch": ["./src/**/*.ts"],
+  "ext": "ts, json"
+}
