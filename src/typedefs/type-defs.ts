@@ -3,7 +3,9 @@ import { gql } from "apollo-server-express";
 
 export enum GraphqlType {
   Element = "Element",
-  NobleGasElement = "NobleGasElement",
+  NobleGas = "NobleGas",
+  AkaliMetal = "AkaliMetal",
+  AlkalineEarthMetal = "AlkalineEarthMetal",
 }
 
 export const typeDefs = gql`
@@ -34,7 +36,7 @@ export const typeDefs = gql`
     elementType: ElementTypes!
   }
 
-  type NobleGasElement implements IAtomicElement {
+  type NobleGas implements IAtomicElement {
     atomicNumber: Int!
     name: String!
     symbol: String!
@@ -43,13 +45,37 @@ export const typeDefs = gql`
     group: Int!
     electronegativity: Float!
     elementType: ElementTypes!
-    otherNobleGasElements: [NobleGasElement]!
+    otherNobleGasses: [NobleGas]!
+  }
+
+  type AkaliMetal implements IAtomicElement {
+    atomicNumber: Int!
+    name: String!
+    symbol: String!
+    atomicMass: Float!
+    period: Int!
+    group: Int!
+    electronegativity: Float!
+    elementType: ElementTypes!
+    otherAkaliMetals: [AkaliMetal]!
+  }
+
+  type AlkalineEarthMetal implements IAtomicElement {
+    atomicNumber: Int!
+    name: String!
+    symbol: String!
+    atomicMass: Float!
+    period: Int!
+    group: Int!
+    electronegativity: Float!
+    elementType: ElementTypes!
+    otherAlkalineEarthMetal: [AlkalineEarthMetal]!
   }
 
   enum ElementTypes {
     NONMETAL
     NOBLE_GAS
-    AlKALI_METAL
+    ALKALI_METAL
     ALKALINE_EARTH_METAL
     METALLOID
     HALOGEN
