@@ -60,5 +60,3 @@ export const typeDefs = gql`
     NO_TYPE
   }
 `;
-
-console.log(typeDefs);
