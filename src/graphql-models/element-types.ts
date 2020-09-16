@@ -5,7 +5,7 @@ import { GraphqlType } from "../typedefs";
 export enum GRAPHQL_ELEMENT_TYPES {
   NONMETAL = "NONMETAL",
   NOBLE_GAS = "NOBLE_GAS",
-  AlKALI_METAL = "AlKALI_METAL",
+  ALKALI_METAL = "AlKALI_METAL",
   ALKALINE_EARTH_METAL = "ALKALINE_EARTH_METAL",
   METALLOID = "METALLOID",
   HALOGEN = "HALOGEN",
@@ -21,8 +21,8 @@ export const getGraphqlElementTypeFromDb = (input: DB_ELEMENT_TYPES) => {
     .with(DB_ELEMENT_TYPES.NONMETAL, () => GRAPHQL_ELEMENT_TYPES.NONMETAL)
     .with(DB_ELEMENT_TYPES.NOBLE_GAS, () => GRAPHQL_ELEMENT_TYPES.NOBLE_GAS)
     .with(
-      DB_ELEMENT_TYPES.AlKALI_METAL,
-      () => GRAPHQL_ELEMENT_TYPES.AlKALI_METAL
+      DB_ELEMENT_TYPES.ALKALI_METAL,
+      () => GRAPHQL_ELEMENT_TYPES.ALKALI_METAL
     )
     .with(
       DB_ELEMENT_TYPES.ALKALINE_EARTH_METAL,
@@ -48,6 +48,11 @@ export const getGraphqlElementForResolver = (
   input: GRAPHQL_ELEMENT_TYPES
 ): GraphqlType => {
   return match(input)
-    .with(GRAPHQL_ELEMENT_TYPES.NOBLE_GAS, () => GraphqlType.NobleGasElement)
+    .with(GRAPHQL_ELEMENT_TYPES.NOBLE_GAS, () => GraphqlType.NobleGas)
+    .with(GRAPHQL_ELEMENT_TYPES.ALKALI_METAL, () => GraphqlType.AkaliMetal)
+    .with(
+      GRAPHQL_ELEMENT_TYPES.ALKALINE_EARTH_METAL,
+      () => GraphqlType.AlkalineEarthMetal
+    )
     .otherwise(() => GraphqlType.Element);
 };
