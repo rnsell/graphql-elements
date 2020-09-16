@@ -1,7 +1,19 @@
 import { Element, convertDbArrayToElements } from "../graphql-models";
 import { getElements, getElementsByType, DB_ELEMENT_TYPES } from "../data";
 
-type Resolver<T> = (obj: T, context: any, info: any) => Promise<any> | any;
+const otherElements = (dbElementType: DB_ELEMENT_TYPES) => async (
+  parent: Element
+) => {
+  const dbElements = await getElementsByType(dbElementType);
+  const domainElements: Element[] = convertDbArrayToElements(dbElements);
+  const nobleGasElementsWithoutCurrentElement = domainElements.filter(
+    (element) => {
+      return element.atomicNumber !== parent.atomicNumber;
+    }
+  );
+
+  return nobleGasElementsWithoutCurrentElement;
+};
 
 export const resolvers = {
   Query: {
@@ -20,21 +32,15 @@ export const resolvers = {
       return obj.__resolveType();
     },
   },
-  NobleGasElement: {
-    otherNobleGasElements: async (parent: Element) => {
-      const nobleGasDbElements = await getElementsByType(
-        DB_ELEMENT_TYPES.NOBLE_GAS
-      );
-      const nobleGasElements: Element[] = convertDbArrayToElements(
-        nobleGasDbElements
-      );
-      const nobleGasElementsWithoutCurrentElement = nobleGasElements.filter(
-        (element) => {
-          return element.atomicNumber !== parent.atomicNumber;
-        }
-      );
-
-      return nobleGasElementsWithoutCurrentElement;
-    },
+  NobleGas: {
+    otherNobleGasses: otherElements(DB_ELEMENT_TYPES.NOBLE_GAS),
+  },
+  AkaliMetal: {
+    otherAkaliMetals: otherElements(DB_ELEMENT_TYPES.ALKALI_METAL),
+  },
+  AlkalineEarthMetal: {
+    otherAlkalineEarthMetal: otherElements(
+      DB_ELEMENT_TYPES.ALKALINE_EARTH_METAL
+    ),
   },
 };
