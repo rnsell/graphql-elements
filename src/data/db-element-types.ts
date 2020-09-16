@@ -1,7 +1,7 @@
 export enum DB_ELEMENT_TYPES {
   NONMETAL = "Nonmetal",
   NOBLE_GAS = "Noble Gas",
-  AlKALI_METAL = "Alkali Metal",
+  ALKALI_METAL = "Alkali Metal",
   ALKALINE_EARTH_METAL = "Alkaline Earth Metal",
   METALLOID = "Metalloid",
   HALOGEN = "Halogen",
