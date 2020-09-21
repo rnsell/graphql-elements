@@ -54,5 +54,14 @@ export const getGraphqlElementForResolver = (
       GRAPHQL_ELEMENT_TYPES.ALKALINE_EARTH_METAL,
       () => GraphqlType.AlkalineEarthMetal
     )
+    .with(GRAPHQL_ELEMENT_TYPES.METALLOID, () => GraphqlType.Metalloid)
+    .with(GRAPHQL_ELEMENT_TYPES.HALOGEN, () => GraphqlType.Halogen)
+    .with(GRAPHQL_ELEMENT_TYPES.METAL, () => GraphqlType.Metal)
+    .with(
+      GRAPHQL_ELEMENT_TYPES.TRANSITION_METAL,
+      () => GraphqlType.TransitionMetal
+    )
+    .with(GRAPHQL_ELEMENT_TYPES.LANTHANIDE, () => GraphqlType.Lanthanide)
+    .with(GRAPHQL_ELEMENT_TYPES.TRANSACTINIDE, () => GraphqlType.Transactinide)
     .otherwise(() => GraphqlType.Element);
 };
