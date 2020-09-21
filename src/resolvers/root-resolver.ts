@@ -1,5 +1,16 @@
 import { Element, convertDbArrayToElements } from "../graphql-models";
 import { getElements, getElementsByType, DB_ELEMENT_TYPES } from "../data";
+import {
+  NobleGas,
+  AkaliMetal,
+  AlkalineEarthMetal,
+  Metalloid,
+  Halogen,
+  Metal,
+  TransitionMetal,
+  Lanthanide,
+  Transactinide,
+} from "./element-type-resolvers";
 
 const otherElements = (dbElementType: DB_ELEMENT_TYPES) => async (
   parent: Element
@@ -17,10 +28,8 @@ const otherElements = (dbElementType: DB_ELEMENT_TYPES) => async (
 
 export const resolvers = {
   Query: {
-    hello: () => "Hello world!",
     elements: async () => {
       const allElements = await getElements();
-      const boop = new Set();
 
       const elements = convertDbArrayToElements(allElements);
 
@@ -32,15 +41,13 @@ export const resolvers = {
       return obj.__resolveType();
     },
   },
-  NobleGas: {
-    otherNobleGasses: otherElements(DB_ELEMENT_TYPES.NOBLE_GAS),
-  },
-  AkaliMetal: {
-    otherAkaliMetals: otherElements(DB_ELEMENT_TYPES.ALKALI_METAL),
-  },
-  AlkalineEarthMetal: {
-    otherAlkalineEarthMetal: otherElements(
-      DB_ELEMENT_TYPES.ALKALINE_EARTH_METAL
-    ),
-  },
+  NobleGas,
+  AkaliMetal,
+  AlkalineEarthMetal,
+  Metalloid,
+  Halogen,
+  Metal,
+  TransitionMetal,
+  Lanthanide,
+  Transactinide,
 };
