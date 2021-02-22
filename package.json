@@ -2,7 +2,7 @@
   "name": "graphql-elements",
   "version": "1.0.0",
   "description": "Graphql api of the atomic elements for fun use",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
     "start": "ts-node ./src/server.ts",
     "dev": "nodemon --exec 'npm start'",
